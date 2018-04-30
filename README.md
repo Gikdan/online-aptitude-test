@@ -12,12 +12,13 @@ To use this template, choose one of the following options to get started:
 ## Prerequisites
 To run online-aptitude-test backend on your server you need one of these PHP versions:
 
-* 5.6
-* 7.0
-* 7.1
+  * 5.6
+  * 7.0
+  * 7.1
 
--Apache Server
--Mysql or any other database engine
+* Apache Server
+* Mysql or any other database engine
+* Laravel 
 
 ## Installing
 simply run the commands below to install project dependencies and serve to start consuming the API:
