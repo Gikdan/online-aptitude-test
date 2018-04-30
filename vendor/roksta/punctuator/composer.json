@@ -1,0 +1,18 @@
+{
+  "name": "roksta/punctuator",
+  "description": "very simple punctuation for texts.",
+  "type": "library",
+  "keywords": ["punctuation", "spacing text", "format text"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "sam_roksta",
+      "email": "roksta21@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Roksta\\Punctuator\\": "src/"
+    }
+  }
+}
