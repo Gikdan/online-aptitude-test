@@ -3,6 +3,10 @@
 Route::group(['prefix' => 'v1'], function() {
 	Route::group(['middleware' => 'guest'], function() {
 		Route::post('login', 'AuthController@login');
+		Route::get('aptitude-test/{code}', 'TestController@start');
+		//Route::post('aptitude-test/user-data/{code}', 'TestController@userData');
+		Route::post('aptitude-test/answer/{code}', 'TestController@answer');
+		
 	});
 
 	Route::group(['middleware' => 'auth:api'], function() {
@@ -18,6 +22,7 @@ Route::group(['prefix' => 'v1'], function() {
 		Route::resource('applicants', 'ApplicantsController');
 		Route::resource('categories', 'CategoriesController');
 		Route::resource('questions', 'QuestionsController');
+		Route::get('aptitude-test/answers/{id}', 'TestController@getUserAnswers');
 	});
 });
 

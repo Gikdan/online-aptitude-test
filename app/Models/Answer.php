@@ -18,6 +18,7 @@ class Answer extends Eloquent
 		'answer',
 		'applicant_id',
 		'question_id',
+		'right',
 		'time_taken'
 		
 	];
@@ -27,12 +28,22 @@ class Answer extends Eloquent
 		return $this->belongsTo(Question::class, 'question_id');
 	}
 
+    public function isAnswer()
+	{
+		if($this->question->answer == $this->answer)
+			return 1;
+		return 0;
+	}
+
+
 	public function parse()
 	{
 		return [
 			'id' => $this->id,
 			'answer' => $this->answer,
-			'question' => $this->question ? $this->question : null,
+			'right'=>$this->right,
+			'question' => $this->question ? $this->question->parseWithAnswer() : null,
 		];
 	}
+
 }

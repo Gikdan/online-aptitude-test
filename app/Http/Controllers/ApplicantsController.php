@@ -44,6 +44,7 @@ class ApplicantsController extends Controller
         $this->validateRequest($request);
 
         $data = $request->all();
+        $data['access_code'] = Applicant::generateCode();
         //$data['phone_number'] = parse_phone_number($data['phone_number']);
         $applicant = Applicant::create($data);
         return $applicant->parse();
@@ -112,4 +113,6 @@ class ApplicantsController extends Controller
             "success" => 1
         ];
     }
+
+ 
 }

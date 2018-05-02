@@ -11,6 +11,8 @@ function parse_phone_number($number)
 	return $number;
 }
 
+
+
 function auth_user()
 { 
 	return App\Models\User::getAll(auth()->guard('api')->id())->parse();

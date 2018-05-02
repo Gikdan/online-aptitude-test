@@ -16,9 +16,11 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('answer')->nullable()->default(null);
-            $table->string('applicant_id',10)->nullable()->default(null);
-            $table->string('question_id',10)->nullable()->default(null);
+            $table->string('applicant_id',10);
+            $table->string('question_id',10);
             $table->string('time_taken',3)->nullable()->default(null);
+            $table->tinyInteger('right')->default(0)->comment('0=wrong, 1=right answer');
+            $table->unique(['applicant_id', 'question_id']);
             $table->timestamps();
             $table->softDeletes();
         });

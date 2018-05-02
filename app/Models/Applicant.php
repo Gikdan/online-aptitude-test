@@ -27,10 +27,28 @@ class Applicant extends Eloquent
 	];
 
 
+   public static function getApplicantId($access_code){
+   	  return self::where('access_code', '=', $access_code)->value('id');
+   }
+
    public function category()
 	{
 		return $this->belongsTo(Category::class);
 	}
+
+   public static function generateCode()
+     {
+    
+        $number = strtoupper(str_random(10));
+
+        $already_used = self::where('access_code', '=', $number)->count();
+
+        if ($already_used == 0) {
+            return $number;
+        }
+        return self::generateCode();
+     }
+
 
 	public function parse()
 	{

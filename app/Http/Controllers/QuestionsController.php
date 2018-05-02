@@ -51,15 +51,14 @@ class QuestionsController extends Controller
        //$data['phone_number'] = parse_phone_number($data['phone_number']);
          $question->save();
 
-         if($question->type !=1){
+         //if($question->type !=1){
           $choices =$request->choices;
           $choice=new Choice();
           $choice->question_id=$question->id;
           $choice->description=json_encode(json_decode($choices));
-          $choice->save();
-        }
+          $choice->save();        
 
-        //return $question->parse();
+          return $question->parse();
     }
 
     private function validateRequest(Request $request)

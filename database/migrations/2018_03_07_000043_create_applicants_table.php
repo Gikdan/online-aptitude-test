@@ -35,6 +35,7 @@ class CreateApplicantsTable extends Migration
             $table->tinyInteger('viewed')->default(0)->comment('0 is false, 1 is true');
             $table->string('access_code', 30)->nullable()->default(null);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->unique(['email', 'category_id']);
             $table->softDeletes();
         });
     }

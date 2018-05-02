@@ -39,6 +39,17 @@ class Question extends Eloquent
 		return self::with(['choices'])->get();
 	}
 
+   public static function getNext($id = null){
+   	
+      if ($id) {
+   	     $data=self::where('id', '>', $id)->first();
+   	   }
+   	 else
+   	   $data=self::first();
+      if($data !=null)
+      	return $data->parse();
+      //else
+   }
 
 	public function parse()
 	{
@@ -46,6 +57,16 @@ class Question extends Eloquent
 			'id' => $this->id,
 			'description' => $this->description,
 			'category' => $this->category ? $this->category->name : 'Unknown',
+			'choices' => $this->choices ? json_decode($this->choices->description) : null
+		];
+	}
+	public function parseWithAnswer()
+	{
+		return [
+			'id' => $this->id,
+			'description' => $this->description,
+			'category' => $this->category ? $this->category->name : 'Unknown',
+			'answer' => $this->answer,
 			'choices' => $this->choices ? json_decode($this->choices->description) : null
 		];
 	}
